@@ -1,0 +1,102 @@
+# ── Global layout ──────────────────────────────────────────────────────────────
+add_newline = true
+
+# Jetpack-style right prompt: time + battery (updates each prompt)
+right_format = """$time$battery"""
+
+# Left prompt: shell · directory · git · duration, then the prompt char
+format = """
+$shell $directory$git_branch$git_state$git_status$cmd_duration
+$character"""
+
+# ── Core modules (Bracketed + plain text) ─────────────────────────────────────
+[shell]
+disabled = false
+zsh_indicator = "zsh"
+bash_indicator = "bash"
+fish_indicator = "fish"
+style = "bold purple"
+format = "[$indicator]($style) "
+
+[directory]
+truncation_length = 3
+style = "bold cyan"
+# bracketed display
+format = "[$path]($style) "
+
+[git_branch]
+# plain-text symbol instead of glyph (from plain-text preset)
+symbol = "git "
+style = "bold green"
+truncation_symbol = "..."
+format = "[$symbol$branch]($style) "
+
+[git_status]
+style = "bold red"
+# bracketed summary; plain-text status markers (from plain-text preset)
+ahead = ">"
+behind = "<"
+diverged = "<>"
+renamed = "r"
+deleted = "x"
+format = "([$all_status$ahead_behind]) "
+
+[cmd_duration]
+min_time = 1000
+style = "bold blue"
+# bracketed "took ..." like your screenshot
+format = "[took $duration]($style) "
+
+[character]
+success_symbol = "❯"
+error_symbol = "❯"
+vicmd_symbol = "❮"
+format = "$symbol "
+
+# ── Right prompt modules ───────────────────────────────────────────────────────
+[time]
+disabled = false
+# same idea as Jetpack’s time module, but with a fuller format
+time_format = "%a %b %d %H:%M"
+style = "bold bright-black"
+format = " [$time]($style) "
+
+[battery]
+disabled = false
+format = " [$percentage]($style) "
+[[battery.display]]
+threshold = 20
+style = "bold red"
+
+# ── Optional: shows only when you’re inside Nix shells ────────────────────────
+[nix_shell]
+style = "bold yellow"
+format = "[nix $name]($style) "
+
+# ── No runtime VERSIONS (keep icons/text minimal) ─────────────────────────────
+# Mirrors the 'no-runtimes' idea: show language presence without the version.
+# (Add more languages if you want; these are the common ones.)
+[nodejs]
+symbol = "nodejs "
+format = 'via [$symbol]($style)'
+
+[python]
+symbol = "py "
+format = 'via [$symbol]($style)'
+
+[rust]
+symbol = "rs "
+format = 'via [$symbol]($style)'
+
+[golang]
+symbol = "go "
+format = 'via [$symbol]($style)'
+
+[java]
+symbol = "java "
+format = 'via [$symbol]($style)'
+
+[package]
+symbol = "pkg "
+format = "[$symbol]($style) "
+
