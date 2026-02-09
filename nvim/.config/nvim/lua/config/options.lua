@@ -10,3 +10,11 @@ vim.o.softtabstop = 4 -- spaces when hitting <Tab>
 
 -- Disable format on save
 vim.g.autoformat = false
+
+-- Absolute line numbers only
+vim.opt.number = true
+vim.opt.relativenumber = false
+
+-- Colorscheme  
+-- vim.cmd.Colorscheme("arctic")
+-- vim.cmd.Colorscheme = "arctic"
