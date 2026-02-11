@@ -39,7 +39,9 @@ behind = "<"
 diverged = "<>"
 renamed = "r"
 deleted = "x"
-format = "([$all_status$ahead_behind]) "
+# ✅ IMPORTANT: escape literal [ ] so Starship doesn't treat them as text-group syntax.
+# This is the documented/default-safe pattern for git_status.format.
+format = '([\[$all_status$ahead_behind\]]($style) )'
 
 [cmd_duration]
 min_time = 1000
@@ -64,9 +66,17 @@ format = " [$time]($style) "
 [battery]
 disabled = false
 format = " [$percentage]($style) "
+
+# Show battery always:
+# - <=20% red
+# - 21–100% dim/grey
 [[battery.display]]
 threshold = 20
 style = "bold red"
+
+[[battery.display]]
+threshold = 100
+style = "bold bright-black"
 
 # ── Optional: shows only when you’re inside Nix shells ────────────────────────
 [nix_shell]
@@ -74,29 +84,27 @@ style = "bold yellow"
 format = "[nix $name]($style) "
 
 # ── No runtime VERSIONS (keep icons/text minimal) ─────────────────────────────
-# Mirrors the 'no-runtimes' idea: show language presence without the version.
-# (Add more languages if you want; these are the common ones.)
+# Show language presence without the version (only appears if you include them in `format`)
 [nodejs]
 symbol = "nodejs "
-format = 'via [$symbol]($style)'
+format = "via [$symbol]($style) "
 
 [python]
 symbol = "py "
-format = 'via [$symbol]($style)'
+format = "via [$symbol]($style) "
 
 [rust]
 symbol = "rs "
-format = 'via [$symbol]($style)'
+format = "via [$symbol]($style) "
 
 [golang]
 symbol = "go "
-format = 'via [$symbol]($style)'
+format = "via [$symbol]($style) "
 
 [java]
 symbol = "java "
-format = 'via [$symbol]($style)'
+format = "via [$symbol]($style) "
 
 [package]
 symbol = "pkg "
 format = "[$symbol]($style) "
-
