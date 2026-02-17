@@ -1,18 +1,24 @@
-return {
-  {
-    "saghen/blink.cmp",
-    optional = true, -- only if blink is actually installed (LazyVim default now)
-    opts = {
-      completion = {
-        list = {
-          selection = {
-            -- ⬇⬇⬇ the important bit
-            preselect = false,      -- do NOT select the first item automatically
-            -- optional: also stop auto-inserting text when you move in the list
-            -- auto_insert = false,
-          },
-        },
-      },
+return 
+{
+    {
+        "saghen/blink.cmp",
+        optional = true,
+
+        opts = function(_, opts)
+        opts.completion = vim.tbl_deep_extend("force", opts.completion or {}, 
+            {
+                list = {
+                    selection = {
+                        preselect = false,
+                    -- auto_insert = false,
+                    },
+                },
+                documentation = {
+                    auto_show = true,
+                    auto_show_delay_ms = 80,
+                },
+            })
+        end,
     },
-  },
 }
+
