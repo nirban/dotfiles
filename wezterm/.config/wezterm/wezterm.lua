@@ -19,7 +19,7 @@ config.color_scheme = "Catppuccin Mocha"
 config.window_decorations = "RESIZE"
 config.hide_tab_bar_if_only_one_tab = false
 config.use_fancy_tab_bar = true
-config.window_padding = { left = 4, right = 4, top = 4, bottom = 4 }
+config.window_padding = { left = 2, right = 2, top = 2, bottom = 0 }
 
 -- Right status: cwd | battery | time
 wezterm.on("update-right-status", function(window, pane)
