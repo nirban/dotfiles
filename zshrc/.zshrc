@@ -131,7 +131,7 @@ export NVM_DIR="$HOME/.nvm"
 
 
 # neovim opt
-alias nvimopt=~/opt/nvim-linux64/bin/nvim
+alias nvim=/home/nirban/opt/nvim-linux-x86_64/bin/nvim
 
 # source ~/.virtualenvs/neovim/bin/activate
 #
